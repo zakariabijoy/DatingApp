@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { error } from 'protractor';
 
 @Component({
@@ -8,17 +8,17 @@ import { error } from 'protractor';
   styleUrls: ['./value.component.css']
 })
 export class ValueComponent implements OnInit {
-  values:any;
-  constructor(private http:HttpClient) { }
+  values: any;
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
     this.getValues();
   }
 
-  getValues(){
-    this.http.get('http://localhost:5000/api/weatherForecast').subscribe(response =>{
+  getValues() {
+    this.http.get('http://localhost:5000/api/weatherForecast').subscribe(response => {
       this.values = response;
-    },error =>{
+    }, error => {
       console.log(error);
     });
   }
